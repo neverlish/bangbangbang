@@ -1,12 +1,41 @@
-<p>현재 접속자 인원 :<%= Mapium.all.size %>명</p>
-<% Mapium.all.pluck(:player_id).each do |id| %>
-<%= User.find(id).name %>
-<% end %>
+<div class="page-header">
+	<p>현재 접속자 인원 :<%= Mapium.all.size %>명</p>
+	
+	<p>Signed in as @<%= cookies.signed[:username] %>.</p>
+</div>
 
-<p>Signed in as @<%= cookies.signed[:username] %>.</p>
+<div>
+	<table>
+		<tr>
+			<td>
+				<div class="thumbnail span8 pre-scrollable chatting_room">
 
-<div id='messages'></div>
-<br/><br/>
+					<div id='messages'></div>
+					<br/><br/>
+				</div>
+				
 
-<%= text_field_tag :body, '', id: 'chat-speak' %>
-<%= text_field_tag :body, '', id: 'chat-talk' %>
+			</td>
+			<td>
+				<div class="thumbnail chatting_info">
+					<h3>user info</h1>
+					<%count_user =0 %>
+					<% Mapium.all.pluck(:player_id).each do |id| %>
+					<%=count_user +=1 %>
+
+					<%= User.find(id).name %><br/>
+					<% end %>
+
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= text_field_tag :body, '', id: 'chat-speak' %>
+				<%= text_field_tag :body, '', id: 'chat-talk' %>
+			</td>
+			<td>
+			</td>
+		</tr>
+	</table>
+</div>
