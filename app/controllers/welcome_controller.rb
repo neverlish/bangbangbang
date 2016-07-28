@@ -11,6 +11,6 @@ class WelcomeController < ApplicationController
   	elsif @change_mapium.status == "alive"
   		@change_mapium.update(status: "dead")
   	end
-  	redirect_to '/welcome/pick'
+  	redirect_to :back
   end
 end

@@ -6,21 +6,20 @@
 	<th>상태</th>
 	<th>상태 변경</th>
 </tr>
-<% Mapium.all.pluck(:user_id).uniq.each do |i| %>
+<% Mapium.all.each do |mapium| %>
 	<tr>
-	<% user_pick = User.find(i) %>
-	<% mapium_pick = Mapium.where(user_id: i).first %>
-		<td><%= user_pick.name %></td>
-		<td><%= mapium_pick.role %></td>
+		<% user = mapium.user %>
+		<td><%= user.name %></td>
+		<td><%= mapium.role %></td>
 		<td>역할 옵션 칸</td>
-		<td><%= mapium_pick.status %></td>
+		<td><%= mapium.status %></td>
 		<td>
-			<%= link_to "/welcome/#{user_pick.id}/change" do %>
+			<%= link_to "/welcome/#{user.id}/change" do %>
 				<button class="btn btn-default">
-					<% if mapium_pick.status == "dead" %>
-						<%= user_pick.name %>님을 살리시겠습니까?
-					<% elsif mapium_pick.status == "alive" %>
-						<%= user_pick.name %>님을 죽이시겠습니까?
+					<% if mapium.status == "dead" %>
+						<%= user.name %>님을 살리시겠습니까?
+					<% elsif mapium.status == "alive" %>
+						<%= user.name %>님을 죽이시겠습니까?
 					<% end %>
 				</button>
 			<% end %>

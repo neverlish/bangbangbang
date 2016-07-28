@@ -58,15 +58,20 @@
 				dead
 				<%else%>
 				alive
-				<%end%><br/>
+				<%end%>
 				<% if Game.last.master_id == id %>
-				!!! ADMIN !!!<br>
+					!!! ADMIN !!!
+				<% end %><br>
 				<% end %>
-				<% end %>
-
-
 			</div>
 		</td>
+		<% if current_user.id == Game.last.master_id %>
+			<td>
+				<div class="thumbnail chatting_info">
+					asdasds
+				</div>
+			</td>
+		<% end %>
 	</tr>
 	<tr>
 		<td>
