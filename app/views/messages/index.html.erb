@@ -19,23 +19,29 @@
 			<td>
 				<div class="thumbnail chatting_info">
 					<h3>user info</h1>
-					<%count_user =0 %>
-					<% Mapium.all.pluck(:player_id).each do |id| %>
-					<%=count_user +=1 %>
+						<%count_user =0 %>
+						<% Mapium.all.pluck(:player_id).each do |id| %>
+						<%=count_user +=1 %>
 
-					<%= User.find(id).name %><br/>
-					<% end %>
+						<%= User.find(id).name %>  
+						== status : 
+						<%if Mapium.find(id).status == 'dead'%>
+						dead
+						<%else%>
+						alive
+						<%end%><br/>
+						<% end %>
 
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%= text_field_tag :body, '', id: 'chat-speak' %>
-				<%= text_field_tag :body, '', id: 'chat-talk' %>
-			</td>
-			<td>
-			</td>
-		</tr>
-	</table>
-</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= text_field_tag :body, '', id: 'chat-speak' %>
+					<%= text_field_tag :body, '', id: 'chat-talk' %>
+				</td>
+				<td>
+				</td>
+			</tr>
+		</table>
+	</div>
