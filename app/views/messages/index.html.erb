@@ -5,7 +5,7 @@
 
 		<p>Signed in as @<%= cookies.signed[:username] %>.</p>
 
-		<%dayNight = 0%><!-- day default-->
+		<%dayNight = 1%><!-- day default-->
 	</div>
 
 	<div>
@@ -19,7 +19,7 @@
 				</div> -->
 				<div class="thumbnail chatting_space">
 					<div data-spy = "scroll" data-target = "#navbar-example" data-offset = "0" 
-					style = "height:330px; overflow:auto; position: relative;">
+					style = "height:330px; width:250px; overflow:auto; position: relative;">
 					<%if dayNight == 0%> <!-- if day -->
 					<div id='messages'></div>
 					
@@ -33,7 +33,7 @@
 		<td>
 			<div class="thumbnail chatting_space">
 				<div data-spy = "scroll" data-target = "#navbar-example" data-offset = "0" 
-				style = "height:330px; overflow:auto; position: relative;">
+				style = "height:330px; width:250px; overflow:auto; position: relative;">
 				<%if dayNight == 1%> <!-- if night -->
 					<div id='messages'></div>
 					
@@ -59,7 +59,11 @@
 				<%else%>
 				alive
 				<%end%><br/>
+				<% if Game.last.master_id == id %>
+				!!! ADMIN !!!<br>
 				<% end %>
+				<% end %>
+
 
 			</div>
 		</td>
@@ -68,14 +72,18 @@
 		<td>
 			Civil chatting<br/>
 			<%dayNight = 0%><!-- day -->
+			<div style = "width:250px;">
 			<%= text_field_tag :body, '', id: 'chat-speak' %>
+			</div>
 			
 		</td>
 
 		<td>
 			Mapia's chatting<br/>
 			<%dayNight = 1%><!-- nitght -->
+			<div style = "width:250px;" >
 			<%= text_field_tag :body, '', id: 'chat-talk' %>
+			</div>
 		</td>
 			<td>
 		</td>
