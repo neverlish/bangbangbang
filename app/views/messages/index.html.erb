@@ -20,7 +20,7 @@
 				<div class="thumbnail chatting_space">
 					<div data-spy = "scroll" data-target = "#navbar-example" data-offset = "0" 
 					style = "height:330px; width:250px; overflow:auto; position: relative;">
-					<%if dayNight == 0%> <!-- if day -->
+					<%if Game.last.daynight == 'day'%>
 					<div id='messages'></div>
 					
 					<br/><br/>
@@ -34,7 +34,7 @@
 			<div class="thumbnail chatting_space">
 				<div data-spy = "scroll" data-target = "#navbar-example" data-offset = "0" 
 				style = "height:330px; width:250px; overflow:auto; position: relative;">
-				<%if dayNight == 1%> <!-- if night -->
+				<%if Game.last.daynight == 'night'%>
 					<div id='messages'></div>
 					
 					<br/><br/>
