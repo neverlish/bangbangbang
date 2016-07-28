@@ -3,9 +3,8 @@ class CreateMapia < ActiveRecord::Migration[5.0]
     create_table :mapia do |t|
       t.references :user
       t.string :role
-      t.string :status
+      t.string :status, default: "alive"
       t.integer :game_id
-      t.string :game_result
 
       t.timestamps
     end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  daynight: MyString
+  result: MyString
+  game_validate: false
+
+two:
+  status: MyString
+  daynight: MyString
+  result: MyString
+  game_validate: false

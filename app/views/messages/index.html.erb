@@ -59,7 +59,11 @@
 				<%else%>
 				alive
 				<%end%><br/>
+				<% if Game.last.master_id == id %>
+				!!! ADMIN !!!<br>
 				<% end %>
+				<% end %>
+
 
 			</div>
 		</td>
