@@ -12,6 +12,9 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
   speak: (msg) ->
     @perform 'speak', message: msg
 
+  talk: (msg) ->
+    @perform 'speak', message: msg
+
 $(document).on 'keypress', '#chat-speak', (event) ->
   if event.keyCode is 13
     App.chat.speak(event.target.value)
@@ -20,6 +23,6 @@ $(document).on 'keypress', '#chat-speak', (event) ->
 
 $(document).on 'keypress', '#chat-talk', (event) ->
   if event.keyCode is 13
-    App.chat.speak(event.target.value)
+    App.chat.talk(event.target.value)
     event.target.value = ""
     event.preventDefault()

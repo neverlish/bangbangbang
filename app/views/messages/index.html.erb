@@ -1,47 +1,87 @@
-<div class="page-header">
-	<p>현재 접속자 인원 :<%= Mapium.all.size %>명</p>
-	
-	<p>Signed in as @<%= cookies.signed[:username] %>.</p>
-</div>
+<body data-spy = "scroll" data-target = ".navbar-example">
 
-<div>
-	<table>
-		<tr>
-			<td>
-				<div class="thumbnail span8 pre-scrollable chatting_room">
+	<div class="page-header">
+		<p>현재 접속자 인원 :<%= Mapium.all.size %>명</p>
+
+		<p>Signed in as @<%= cookies.signed[:username] %>.</p>
+
+		<%dayNight = 0%><!-- day default-->
+	</div>
+
+	<div>
+		<table>
+			<tr>
+				<td>
+				<!-- <div class="thumbnail chatting_room footer">
 
 					<div id='messages'></div>
 					<br/><br/>
+				</div> -->
+				<div class="thumbnail chatting_space">
+					<div data-spy = "scroll" data-target = "#navbar-example" data-offset = "0" 
+					style = "height:330px; overflow:auto; position: relative;">
+					<%if dayNight == 0%> <!-- if day -->
+					<div id='messages'></div>
+					
+					<br/><br/>
+					<%end%>
 				</div>
-				
+			</div>
 
-			</td>
+
+		</td>
+		<td>
+			<div class="thumbnail chatting_space">
+				<div data-spy = "scroll" data-target = "#navbar-example" data-offset = "0" 
+				style = "height:330px; overflow:auto; position: relative;">
+				<%if dayNight == 1%> <!-- if night -->
+					<div id='messages'></div>
+					
+					<br/><br/>
+					<%end%>
+
+			</div>
+		</div>
+
+
+	</td>
+	<td>
+		<div class="thumbnail chatting_info">
+			<h3>user info</h1>
+				<%count_user =0 %>
+				<% Mapium.all.pluck(:player_id).each do |id| %>
+				<%=count_user +=1 %>
+
+				<%= User.find(id).name %>  
+				== status : 
+				<%if Mapium.find(id).status == 'dead'%>
+				dead
+				<%else%>
+				alive
+				<%end%><br/>
+				<% end %>
+
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Civil chatting<br/>
+			<%dayNight = 0%><!-- day -->
+			<%= text_field_tag :body, '', id: 'chat-speak' %>
+			
+		</td>
+
+		<td>
+			Mapia's chatting<br/>
+			<%dayNight = 1%><!-- nitght -->
+			<%= text_field_tag :body, '', id: 'chat-talk' %>
+		</td>
 			<td>
-				<div class="thumbnail chatting_info">
-					<h3>user info</h1>
-						<%count_user =0 %>
-						<% Mapium.all.pluck(:player_id).each do |id| %>
-						<%=count_user +=1 %>
+		</td>
+	</tr>
+</table>
+</div>
 
-						<%= User.find(id).name %>  
-						== status : 
-						<%if Mapium.find(id).status == 'dead'%>
-						dead
-						<%else%>
-						alive
-						<%end%><br/>
-						<% end %>
+</body>
 
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<%= text_field_tag :body, '', id: 'chat-speak' %>
-					<%= text_field_tag :body, '', id: 'chat-talk' %>
-				</td>
-				<td>
-				</td>
-			</tr>
-		</table>
-	</div>

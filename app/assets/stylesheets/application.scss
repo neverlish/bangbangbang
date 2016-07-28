@@ -5,9 +5,27 @@
 .chatting_room{
     height:340px;
  	 width:370px;  
+ 	 overflow: scroll;
+
 }
 
 .chatting_info{
+    height:340px;
+ 	 width:270px;  
+}
+
+.scroll_fixed
+{
+    position: fixed;
+    top: 20px;
+}
+
+.footer {
+position:relative;
+bottom: 0px;
+}
+
+chatting_space{
     height:340px;
  	 width:270px;  
 }
