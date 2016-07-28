@@ -3,9 +3,26 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.min{
-color: white;
-width: 150px;
-white-space: normal;
-background-color: black;
+
+.mafiachat{
+background-image: url("mafia2.jpg");
+background-repeat: no-repeat;
+background-position: center; 
+background-size: cover; 
+
+}
+
+.mafiachat:hover{
+background-image: url("mafia2.jpg");
+background-repeat: no-repeat;
+background-position: center; 
+background-size: cotain;
+opacity: 0.5;  
+background-size: cover; 
+}
+
+.escribe{
+	color : blue;
+	word-wrap:break-word;
+	overflow-x: hidden;
 }
