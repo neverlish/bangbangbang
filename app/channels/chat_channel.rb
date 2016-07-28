@@ -17,6 +17,12 @@ class ChatChannel < ApplicationCable::Channel
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
+
+  def change_step(data)
+    step = data['step']
+    Game.last.update!(daynight: step)
+    ActionCable.server.broadcast('messages', step: step)
+  end
   
   private
 

@@ -20,11 +20,9 @@
 				<div class="thumbnail chatting_space">
 					<div data-spy = "scroll" data-target = "#navbar-example" data-offset = "0" 
 					style = "height:330px; width:250px; overflow:auto; position: relative;">
-					<%if Game.last.daynight == 'day'%>
-					<div id='messages'></div>
+					<div id='day-messages'></div>
 					
 					<br/><br/>
-					<%end%>
 				</div>
 			</div>
 
@@ -34,11 +32,9 @@
 			<div class="thumbnail chatting_space">
 				<div data-spy = "scroll" data-target = "#navbar-example" data-offset = "0" 
 				style = "height:330px; width:250px; overflow:auto; position: relative;">
-				<%if Game.last.daynight == 'night'%>
-					<div id='messages'></div>
+					<div id='night-messages'></div>
 					
 					<br/><br/>
-					<%end%>
 
 			</div>
 		</div>
@@ -68,7 +64,8 @@
 		<% if current_user.id == Game.last.master_id %>
 			<td>
 				<div class="thumbnail chatting_info">
-					asdasds
+					<div id="night" class="btn btn-primary">밤</div>
+					<div id="day" class="btn btn-primary">낮</div>
 				</div>
 			</td>
 		<% end %>
