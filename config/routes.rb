@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get 'mapia/create'
-
+  get 'welcome/pick'
   get 'mapia_info/create'
+  get 'welcome/:id/change' => 'welcome#change'
 
 
   # devise_for :users
