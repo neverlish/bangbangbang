@@ -32,7 +32,4 @@ class ChatChannel < ApplicationCable::Channel
 	      username: current_user
 	    })
 	end
-
-
-
 end

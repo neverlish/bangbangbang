@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'mapia/create'
+
+  get 'mapia_info/create'
+
+
   # devise_for :users
 	devise_for :users, :controllers => { registrations: 'registrations' }
 

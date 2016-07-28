@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727104013) do
+ActiveRecord::Schema.define(version: 20160728031410) do
+
+  create_table "mapia", force: :cascade do |t|
+    t.integer  "player_id"
+    t.string   "role"
+    t.string   "status"
+    t.integer  "game_id"
+    t.string   "game_result"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

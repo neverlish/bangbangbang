@@ -1,0 +1,2 @@
+class Mapium < ApplicationRecord
+end
