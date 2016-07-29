@@ -1,6 +1,21 @@
 @import "bootstrap";
 @import "messages";
 
+.mafiatitle{
+	background-color : black;
+	color: white;
+}
+
+.font_dead{
+color: #FF7575;	
+font-weight : bold;
+}
+
+.font_alive{
+color: #44B4D5;
+font-weight : bold;
+}
+
 
 .chatting_room{
     height:340px;
@@ -11,6 +26,13 @@
 .chatting_info{
     height:340px;
  	 width:270px;  
+}
+
+.chatting_info h3{
+	text-align:center;
+	align: center;
+	background-color : red;
+
 }
 
 .scroll_fixed

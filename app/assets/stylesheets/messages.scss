@@ -3,26 +3,31 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
 .mafiachat{
-background-image: url("mafia2.jpg");
+background-image: url("mafia_modify_3.jpg");
 background-repeat: no-repeat;
 background-position: center; 
 background-size: cover; 
-
 }
 
 .mafiachat:hover{
-background-image: url("mafia2.jpg");
+background-image: url("mafia_modify_2.jpg");
 background-repeat: no-repeat;
 background-position: center; 
-background-size: cotain;
-opacity: 0.5;  
-background-size: cover; 
+background-size: cover;
+ 
 }
 
 .escribe{
-	color : blue;
+	color : red;
 	word-wrap:break-word;
 	overflow-x: hidden;
+}
+
+
+.civilchat{
+background-image: url("society.png");
+background-repeat: no-repeat;
+background-position: center; 
+background-size: cover; 
 }
