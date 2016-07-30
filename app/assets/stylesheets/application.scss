@@ -1,21 +1,53 @@
 @import "bootstrap";
 @import "messages";
 
-.mafiatitle{
-	background-color : black;
-	color: white;
+
+.vidi{
+ position: relative;
+ }
+
+.vidi article {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 10px;
 }
 
-.font_dead{
-color: #FF7575;	
-font-weight : bold;
+#video-background {
+  position: absolute; 
+  max-width: 1000px; 
+  max-height: 150px;
+  align: center;
+  z-index :-100;
+  left: 38%;
 }
 
-.font_alive{
-color: #44B4D5;
-font-weight : bold;
+.vidi h1 {
+  position: absolute;
+  top: 60%;
+  width: 100%;
+  font-size: 36px;
+  letter-spacing: 3px;
+  color: white;
+  font-family: Oswald, sans-serif;
+  text-align: center;
 }
 
+
+.chatbtn{
+	height:340px;
+ 	 width:100px;
+ 	 vertical-align: middle;
+
+}
+
+chatting_space{
+
+    height:330px;
+    width:400px;  
+}
 
 .chatting_room{
     height:340px;
@@ -32,21 +64,45 @@ font-weight : bold;
 	text-align:center;
 	align: center;
 	background-color : red;
-
 }
 
 .scroll_fixed
 {
-    position: fixed;
-    top: 20px;
+     overflow:auto;
+     height:330px;
+     width:400px;
 }
 
+.mafiatitle{
+	background-color : black;
+	color: white;
+}
+
+.font_dead{
+color: #FF7575;	
+font-weight : bold;
+}
+
+.font_alive{
+color: #44B4D5;
+font-weight : bold;
+}
 .footer {
 position:relative;
 bottom: 0px;
 }
 
-chatting_space{
-    height:340px;
- 	 width:270px;  
+
+.outside
+{
+    height:330px;
+    width:400px;
+    position: relative;
+    overflow-y: scroll;
+}
+
+
+.inside
+{
+   
 }

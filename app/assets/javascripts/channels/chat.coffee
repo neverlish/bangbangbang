@@ -16,6 +16,7 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
     if data.message?
       if step == "day"
         $('#day-messages').append(data.message)
+
       else if step == "night"
         $('#night-messages').append(data.message)
       

@@ -1,8 +1,9 @@
 <p>
   <b><%= username %>:</b> 
 
+
   <% if Game.last.daynight == 'day'%>
-  <p class="escribe">이게 <%=message%> 아이디 </p>
+  <p class="escribe"><%=message%></p>
   <%else%>
    <p class="escribe"><%=message%></p>
   <%end%>
