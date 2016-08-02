@@ -1,121 +1,73 @@
 <body data-spy = "scroll" data-target = ".navbar-example">
 
 <div class="vidi">
-   <article>
-       <h1>MAFIA GAME</h1>
-   </article>
-   
-<video autoplay="" loop="" class="fillWidth fadeIn animated" poster="https://s3-us-west-2.amazonaws.com/coverr/poster/Traffic-blurred2.jpg" id="video-background">
-    <source src="https://s3-us-west-2.amazonaws.com/coverr/mp4/Traffic-blurred2.mp4" type="video/mp4">
-</video>
+	 <article>
+			 <h1>MAFIA GAME</h1>
+	 </article>
+	 
+	<video autoplay="" loop="" class="fillWidth fadeIn animated" poster="https://s3-us-west-2.amazonaws.com/coverr/poster/Traffic-blurred2.jpg" id="video-background">
+			<source src="https://s3-us-west-2.amazonaws.com/coverr/mp4/Traffic-blurred2.mp4" type="video/mp4">
+	</video>
 </div>
 
 <br><br><br><br><br><br><br><br>
 
 
-	<div class="page-header">
-		<p>현재 접속자 인원 :<%= Mapium.all.size %>명</p>
+<div class="page-header">
+	<p>현재 접속자 인원 :<%= Mapium.all.size %>명</p>
 
-		<p>Signed in as @<%= cookies.signed[:username] %>.</p>
+	<p>Signed in as @<%= cookies.signed[:username] %>.</p>
 
-		<%dayNight = 1%><!-- day default-->
-	</div>
-
-	<div>
-		<table>
-			<tr>
-				<td>
-				<!-- <div class="thumbnail chatting_room footer">
-
-					<div id='messages'></div>
-					<br/><br/>
-				</div> -->
-					<div class="thumbnail chatting_space civilchat">
-					<div class="outside">
-		
-					<div id='day-messages' class="inside"></div>
-					
-				    </div>
-			         </div>
-			     </td>
-
-		          <td>
-					<div class="thumbnail chatting_space mafiachat">
-					<div class="outside">
-					<div id='night-messages' class="inside"></div>
-				    </div>
-			         </div>
-					   <!-- 우주 소스-->  
-					<!-- <div data-spy = "scroll" data-target = "#navbar-example" data-offset = "0" 
-					style = "height:330px; width:400px; overflow:auto; position: relative;">
-						<div id='night-messages' class="inside"></div>
-							</div> -->	
-					</td>
-</div>				
-				<td>
-					<div class="thumbnail chatting_info">
-					<table class="table">
-						<tr>		
-							<h3>user info</h3>
-						</tr>
-						 <tr>		
-								<%count_user =0 %>
-								<% Mapium.all.pluck(:user_id).each do |id| %>
-								<%=count_user +=1 %>
-
-								<%= User.find(id).name %>  
-								== status : 
-								<%if Mapium.find(id).status == 'dead'%>
-								<span class="font_dead">DEAD</span> 
-								
-								<%else%>
-								<span class="font_alive">ALIVE</span>
-								<%end%>								
-								<% if Game.last.master_id == id %>
-									 [ADMIN]
-								
-						         <% end %>
-						         <br>
-						         <% end %>
-						        
-						 </tr>		
-					 </div>
-					</table>
-				</td>
-
-						
-				<td>
-						<div class="thumbnail chatbtn">
-						<% if current_user.id == Game.last.master_id %>
-					
-						<div id="night" class="btn btn-primary">밤</div>
-						<div id="day" class="btn btn-primary">낮</div>
-					</div>
-				</td>
-						<% end %>
-			</tr>
-			<tr>
-				<td>
-						Civil chatting <br/>
-						<%dayNight = 0%><!-- day -->
-						<div style = "width:250px;">
-						<%= text_field_tag :body, '', id: 'chat-speak' %>
-						</div>
-			
-				</td>
-
-				<td>
-						Mapia's chatting<br/>
-						<%dayNight = 1%><!-- nitght -->
-						<div style = "width:250px;" >
-						<%= text_field_tag :body, '', id: 'chat-talk' %>
-						</div>
-				</td>
-			<td>
-		</td>
-	</tr>
-</table>
+	<%dayNight = 1%><!-- day default-->
 </div>
 
-</body>
+<div class="row">
+	<div class="col-xs-4 chatting_space civilchat" id="day-chat">
+		<div class="outside">
+			<div class="inside" id="day-messages">
+			</div>
+		</div>
 
+		Civil chatting <br/>
+		<div style = "width:250px;">
+			<%= text_field_tag :body, '', id: 'chat-speak' %>
+		</div>
+	</div>
+
+	<div class="col-xs-4 chatting_space mafiachat" id="night-chat">
+		<div class="outside">
+			<div class="inside" id="night-messages">
+			</div>
+		</div>
+
+		Mapia's chatting<br/>
+		<div style = "width:250px;" >
+			<%= text_field_tag :body, '', id: 'chat-talk' %>
+		</div>
+	</div>
+
+	<div class="col-xs-3 chatting_info">
+		<h3>user info</h3>
+
+		<% Mapium.all.each_with_index do |mapium, index| %>
+			<% user = mapium.user %>
+			<%= user.name %> : 
+			<% if mapium.status == "dead" %>
+				<span class="font_dead">DEAD</span>
+			<% else %>
+				<span class="font_alive">ALIVE</span>
+			<% end %>
+			<% if Game.last.master_id == user.id %>
+				[ADMIN]
+			<% end %>
+			<br>
+		<% end %>
+
+	</div>
+	<div class="col-xs-1 chatbtn">
+		<% if current_user.id == Game.last.master_id %>
+			<div id="night" class="btn btn-primary">밤</div>
+			<div id="day" class="btn btn-primary">낮</div>
+		<% end %>
+	</div>
+</div>
