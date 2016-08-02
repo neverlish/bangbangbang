@@ -2,6 +2,8 @@ class SessionsController < ApplicationController
 	before_action :authenticate_user!
   def create
     # cookies.signed[:username] = params[:session][:username]    
+    cookies.signed[:username] = current_user.name
+
   	if Game.where(status: "ready").size == 0
   		Game.create(master_id: 0)
   	end
