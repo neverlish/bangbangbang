@@ -14,12 +14,13 @@
 
 
 <div class="page-header">
-<p><i class="fa fa-bullhorn fa-2x" style="color: red"></i>
-현재 접속자 인원 :<%= Mapium.all.size %>명</p>
+<span><i class="fa fa-bullhorn fa-2x" style="color: red"></i>
+현재 접속자 인원 :</span>
+<span id="info-messages"></span>
+<span>명</span>
 
 <p>Signed in as @<%= cookies.signed[:username] %>.</p>
 
-	<%dayNight = 1%><!-- day default-->
 </div>
 
 <div class="row">

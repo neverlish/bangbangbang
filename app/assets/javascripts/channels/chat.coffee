@@ -23,7 +23,7 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
 
      if data.system_info?
       if data.system_info == "user_join"
-        appendMessage(data.user_info.count_number + "명")
+        appendSystemMessage(data.user_info.count_number)
 
   speak: (msg) ->
     @perform 'speak', message: msg
@@ -44,6 +44,8 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
     else if step == "night"
       $('#night-messages').append(message)
 
+  appendSystemMessage = (message) ->
+    $('#info-messages').html(message)
 
 $(document).on 'keypress', '#chat-speak', (event) ->
   if event.keyCode is 13
