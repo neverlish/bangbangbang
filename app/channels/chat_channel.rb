@@ -25,7 +25,7 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def user_join
-    ActionCable.server.broadcast('messages', step: Game.last.daynight, user_info: { name: "jy" }, system_info: "user_join")
+    ActionCable.server.broadcast('messages', step: Game.last.daynight, user_info: { name: Mapium.last.user.name, count_number: Mapium.where(game_id: Game.last.id).count}, system_info: "user_join")
   end
   
   private

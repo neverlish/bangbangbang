@@ -21,6 +21,10 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
       if data.system_info == "user_join"
         appendMessage(data.user_info.name + "님이 참여하셨습니다.")
 
+     if data.system_info?
+      if data.system_info == "user_join"
+        appendMessage(data.user_info.count_number + "명")
+
   speak: (msg) ->
     @perform 'speak', message: msg
 
