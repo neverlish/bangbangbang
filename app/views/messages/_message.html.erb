@@ -1,12 +1,14 @@
-<p>
-  <b><%= username %>:</b> 
 
-
-  <% if Game.last.daynight == 'day'%>
-  <span class="escribe"><%=message%></span>
-  <%else%>
-   <span class="escribe"><%=message%></span>
-  <%end%>
-
-
-</p> 
+ <% if Game.last.daynight == 'day' %>
+	<p>	
+	<i class="fa fa-user fa-lg" style="color:green;"></i>  
+	<b class="nickcolor"><%=username%>:</b> 
+	<span class="escribe_day"><%=message%></span>
+	</p>
+<% else %>
+	 <p>
+	 <i class="fa fa-users fa-lg" style="color:red;"></i>  
+      <b class="nickcolor" ><%=username%>:</b> 
+      <span class="escribe_night"><%=message%></span>
+      </p>
+<%end%>

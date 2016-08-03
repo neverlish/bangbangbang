@@ -3,30 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.civilchat{
+background-image: url("city.jpg");
+background-repeat: no-repeat;
+background-position: center; 
+background-size: cover; 
+	.nickcolor {
+		color:red;
+	}
+	.escribe_day{
+	color : black;
+	word-wrap:break-word;
+	overflow-x: hidden;
+     }
+}
+
+
 .mafiachat{
 background-image: url("mafia_modify_3.jpg");
 background-repeat: no-repeat;
 background-position: center; 
 background-size: cover;
-}
-
-.mafiachat:hover{
-background-image: url("mafia_modify_2.jpg");
-background-repeat: no-repeat;
-background-position: center; 
-background-size: cover;
-}
-
-.escribe{
-	color : red;
+	.nickcolor {
+		color:green;
+	}
+	.escribe_night{
+	color : white;
 	word-wrap:break-word;
 	overflow-x: hidden;
+     }
 }
 
 
-.civilchat{
-background-image: url("society.png");
-background-repeat: no-repeat;
-background-position: center; 
-background-size: cover; 
-}
+
+
