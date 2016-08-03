@@ -14,19 +14,27 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
     if data.step?.length
       step = data.step
 
-    if data.message?
-      appendMessage(data.message)
-      $("#day-messages").scrollTop($("#day-messages")[0].scrollHeight);
-      $("#night-messages").scrollTop($("#day-messages")[0].scrollHeight);
-
+     if data.message?
+        appendMessage(data.message)
+        $("#day-messages").scrollTop($("#day-messages")[0].scrollHeight);
+        $("#night-messages").scrollTop($("#night-messages")[0].scrollHeight);
 
     if data.system_info?
       if data.system_info == "user_join"
         appendMessage(data.user_info.name + "님이 참여하셨습니다.")
 
-     if data.system_info?
+      else if data.system_info == "players_lists"
+        $('#chatting-info-items').html('') #보내기전에 내용 전부다 지우기  
+        for player in data.players
+          appendSystemUserListItem(player)
+
+    if data.system_info?
       if data.system_info == "user_join"
         appendSystemMessage(data.user_info.count_number)
+    
+
+
+        
 
   speak: (msg) ->
     @perform 'speak', message: msg
@@ -49,6 +57,23 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
 
   appendSystemMessage = (message) ->
     $('#info-messages').html(message)
+
+  appendSystemUserListItem = (userListItem) ->
+    itemHtmlString = 
+      '<div>' + userListItem.index + ' ' + userListItem.name + ' ' + userListItem.status +
+      '</div>'
+
+    $('#chatting-info-items').append(itemHtmlString)
+
+  appendSystemMessageUserIndex = (message) ->
+    $('#user-info-index').append(message + '<br>')
+
+  appendSystemMessageUserName = (message) ->
+    $('#user-info-name').append(message + '<br>')
+
+  appendSystemMessageUserStat = (message) ->
+    $('#user-info-status').append(message + '<br>')
+
 
 $(document).on 'keypress', '#chat-speak', (event) ->
   if event.keyCode is 13

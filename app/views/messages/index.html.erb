@@ -24,21 +24,26 @@
 </div>
 
 <div class="row">
-	<div class="col-xs-4"> 
-	<div class ="chatting_space civilchat" id="day-chat">
-		<div class="outside" id="day-messages">
-		</div>
+	<div class="col-xs-4">
+		<div class="chatting_space civilchat" id="day-chat">
+			<div class="outside">
+				<div class="inside" id="day-messages">
+				</div>	
+			</div>
 
-		Civil chatting <br/>
-		<div style = "width:250px;">
-			<%= text_field_tag :body, '', id: 'chat-speak' %>
-		</div>
+			Civil chatting <br/>
+			<div style = "width:250px;">
+				<%= text_field_tag :body, '', id: 'chat-speak' %>
+			</div>
 		</div>
 	</div>
 
-	<div class="col-xs-4"> 
-	<div class="chatting_space mafiachat" id="night-chat">
-		<div class="outside" id="night-messages">
+	<div class="col-xs-4">
+		<div class="chatting_space mafiachat" id="night-chat">
+			<div class="outside">
+				<div class="inside" id="night-messages">
+				</div>
+			</div>
 		</div>
 
 		Mapia's chatting<br/>
@@ -46,34 +51,21 @@
 			<%= text_field_tag :body, '', id: 'chat-talk' %>
 		</div>
 	</div>
-	</div>
 
 	<div class="col-xs-3">
 	<div class="chatting_info">
+
 		<h3>user info</h3>
-
-		<% Mapium.all.each_with_index do |mapium, index| %>
-			<% user = mapium.user %>
-			<%= user.name %> : 
-			<% if mapium.status == "dead" %>
-				<span class="font_dead">DEAD</span>
-			<% else %>
-				<span class="font_alive">ALIVE</span>
-			<% end %>
-			<% if Game.last.master_id == user.id %>
-				[ADMIN]
-			<% end %>
-			<br>
-		<% end %>
+		<div id="chatting-info-items"></div>
 	</div>
 	</div>
-
 	<div class="col-xs-1">
-	<div class="chatbtn">
-		<% if current_user.id == Game.last.master_id %>
-			<div id="night" class="btn btn-primary">밤</div>
-			<div id="day" class="btn btn-primary">낮</div>
-		<% end %>
+		<div class="chatbtn">
+
+			<% if current_user.id == Game.last.master_id %>
+				<div id="night" class="btn btn-primary">밤</div>
+				<div id="day" class="btn btn-primary">낮</div>
+			<% end %>
+		</div>
 	</div>
-</div>
 </div>
