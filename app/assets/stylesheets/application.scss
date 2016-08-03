@@ -6,6 +6,13 @@
  *= require font-awesome
  */
  
+.footer {
+position:relative;
+bottom: 0px;
+}
+
+
+/* ======비디오 관련 소스 ======== */
 
 .vidi{
  position: relative;
@@ -40,29 +47,29 @@
   text-align: center;
 }
 
+/* ======채팅 스페이스 관련 소스 ======== */
+
 
 .chatbtn{
 	height:340px;
  	 width:100px;
  	 vertical-align: middle;
-
 }
 
 chatting_space{
-
     height:330px;
     width:400px;  
 }
 
 .chatting_room{
-    height:340px;
+   height:340px;
  	 width:370px;  
  	 overflow: scroll;
 }
 
 .chatting_info{
     height:340px;
- 	 width:270px;  
+ 	  width:270px;  
 }
 
 .chatting_info h3{
@@ -71,12 +78,29 @@ chatting_space{
 	background-color : red;
 }
 
+
+
+/* ====== 스크롤 관련 소스 ======== */
+
+
+.outside
+{
+    height:330px;
+    width:360px;
+    position: relative;
+    overflow-y: scroll;
+}
+
+
 .scroll_fixed
 {
      overflow:auto;
      height:330px;
      width:400px;
 }
+
+
+/* ====== 폰 트 관련 소스 ======== */
 
 .mafiatitle{
 	background-color : black;
@@ -92,22 +116,4 @@ font-weight : bold;
 color: #44B4D5;
 font-weight : bold;
 }
-.footer {
-position:relative;
-bottom: 0px;
-}
 
-
-.outside
-{
-    height:330px;
-    width:400px;
-    position: relative;
-    overflow-y: scroll;
-}
-
-
-.inside
-{
-   
-}

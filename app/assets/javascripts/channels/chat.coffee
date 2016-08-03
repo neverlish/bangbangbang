@@ -16,6 +16,9 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
 
     if data.message?
       appendMessage(data.message)
+      $("#day-messages").scrollTop($("#day-messages")[0].scrollHeight);
+      $("#night-messages").scrollTop($("#day-messages")[0].scrollHeight);
+
 
     if data.system_info?
       if data.system_info == "user_join"
