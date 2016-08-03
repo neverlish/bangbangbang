@@ -23,6 +23,10 @@ class ChatChannel < ApplicationCable::Channel
     Game.last.update!(daynight: step)
     ActionCable.server.broadcast('messages', step: step)
   end
+
+  def user_join
+    ActionCable.server.broadcast('messages', step: Game.last.daynight, user_info: { name: "jy" }, system_info: "user_join")
+  end
   
   private
 

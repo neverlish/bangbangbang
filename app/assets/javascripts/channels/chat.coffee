@@ -3,6 +3,7 @@ step = "day"
 App.chat = App.cable.subscriptions.create "ChatChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
+    this.user_join()
 
   disconnected: ->
     # Called when the subscription has been terminated by the server
@@ -14,12 +15,11 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
       step = data.step
 
     if data.message?
-      if step == "day"
-        $('#day-messages').append(data.message)
+      appendMessage(data.message)
 
-      else if step == "night"
-        $('#night-messages').append(data.message)
-      
+    if data.system_info?
+      if data.system_info == "user_join"
+        appendMessage(data.user_info.name + "님이 참여하셨습니다.")
 
   speak: (msg) ->
     @perform 'speak', message: msg
@@ -29,6 +29,17 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
 
   change_step: (step) ->
     @perform 'change_step', step: step
+
+  user_join: ->
+    @perform 'user_join'
+
+  appendMessage = (message) ->
+    if step == "day"
+      $('#day-messages').append(message)
+
+    else if step == "night"
+      $('#night-messages').append(message)
+
 
 $(document).on 'keypress', '#chat-speak', (event) ->
   if event.keyCode is 13

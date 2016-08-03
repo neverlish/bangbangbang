@@ -4,4 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :mapia
+
+  def user_info
+  	{ name: name, email: email }
+  end
 end
