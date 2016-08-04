@@ -25,7 +25,8 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def kill_player(data)
-    kill_numbeer = data['kill_number']
+    kill_number = data['kill_number'].to_i
+    ActionCable.server.broadcast('messages', system_info: "player_dead", player_name: Game.last.mapia[kill_number].user.name)
     Game.last.mapia[kill_number].update(status:"dead")
     render_userListInfomessage()
   end

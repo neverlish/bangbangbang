@@ -31,6 +31,9 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
       else if data.system_info == "game_started"
         appendSystemAnounce("Mafia Game 이 시작되었습니다.")
 
+      else if data.system_info == "player_dead"
+        appendSystemAnounce(data.player_name + "이 사망했습니다.")
+
     if data.system_info?
       if data.system_info == "user_join"
         appendSystemMessage(data.user_info.count_number)
@@ -118,22 +121,22 @@ $(document).ready ->
 
 
 $(document).on 'click', '#player1', ->
- App.chat.kill_player(0)
+ App.chat.kill_player("0")
 $(document).on 'click', '#player2', ->
- App.chat.kill_player(1)
+ App.chat.kill_player("1")
 $(document).on 'click', '#player3', ->
- App.chat.kill_player(2)
+ App.chat.kill_player("2")
 $(document).on 'click', '#player4', ->
- App.chat.kill_player(3)
+ App.chat.kill_player("3")
 $(document).on 'click', '#player5', ->
- App.chat.kill_player(4)
+ App.chat.kill_player("4")
 $(document).on 'click', '#player6', ->
- App.chat.kill_player(5)
+ App.chat.kill_player("5")
 $(document).on 'click', '#player7', ->
- App.chat.kill_player(6)
+ App.chat.kill_player("6")
 $(document).on 'click', '#player8', ->
- App.chat.kill_player(7)
+ App.chat.kill_player("7")
 $(document).on 'click', '#player9', ->
- App.chat.kill_player(8)
+ App.chat.kill_player("8")
 $(document).on 'click', '#player10', ->
- App.chat.kill_player(9)
+ App.chat.kill_player("9")
