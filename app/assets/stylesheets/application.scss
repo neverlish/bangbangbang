@@ -51,9 +51,9 @@ bottom: 0px;
 
 
 .chatbtn{
-	height:340px;
- 	 width:100px;
- 	 vertical-align: middle;
+    height:340px;
+     width:100px;
+     vertical-align: middle;
 }
 
 chatting_space{
@@ -63,19 +63,19 @@ chatting_space{
 
 .chatting_room{
    height:340px;
- 	 width:370px;  
- 	 overflow: scroll;
+     width:370px;  
+     overflow: scroll;
 }
 
 .chatting_info{
     height:340px;
- 	  width:270px;  
+      width:270px;  
 }
 
 .chatting_info h3{
-	text-align:center;
-	align: center;
-	background-color : red;
+    text-align:center;
+    align: center;
+    background-color : red;
 }
 
 
@@ -103,12 +103,12 @@ chatting_space{
 /* ====== 폰 트 관련 소스 ======== */
 
 .mafiatitle{
-	background-color : black;
-	color: white;
+    background-color : black;
+    color: white;
 }
 
 .font_dead{
-color: #FF7575;	
+color: #FF7575; 
 font-weight : bold;
 }
 
@@ -117,3 +117,66 @@ color: #44B4D5;
 font-weight : bold;
 }
 
+/* ====== kill player drop_down ===== */
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+
+/* ==== image part ==== */
+
+#mafia_image {
+        position: absolute;
+        height: 470px;
+        width: 360px;
+        image_src:"moon1.jpg";
+        left: 36.8%;
+        z-index: 100;
+        display: block;
+        margin: auto;
+    }
+
+
+.civilimage {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-image: url("forbid.jpeg");
+        z-index: 1;
+    }

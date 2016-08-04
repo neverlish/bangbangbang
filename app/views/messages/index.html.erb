@@ -59,11 +59,48 @@
 			<% if current_user.id == Game.last.master_id %>
 				<div id="night" class="btn btn-primary">밤</div>
 				<div id="day" class="btn btn-primary">낮</div>
-				<div id="start_game" class="btn btn-primary">start game</div>
-				<% Game.last.users.each do |user| %>
-					<%= user.name %>: <%= user.mapia.last.role %><br>
 				<% end %>
-			<% end %>
+				<div id="start_game" class="btn btn-primary">start game</div>
+
+				<br><br><br>
+
+			  <div id="player1" class="btn btn-primary btn-xs"><i class="fa fa-gavel fa-lg" style="color: red"></i>P1</div>
+                <div id="player2" class="btn btn-primary btn-xs"><i class="fa fa-gavel fa-lg" style="color: red"></i>P2</div>
+                <div id="player4" class="btn btn-primary btn-xs"><i class="fa fa-gavel fa-lg" style="color: red"></i>P3</div>
+                <div id="player5" class="btn btn-primary btn-xs"><i class="fa fa-gavel fa-lg" style="color: red"></i>P4</div>
+                <div id="player6" class="btn btn-primary btn-xs"><i class="fa fa-gavel fa-lg" style="color: red"></i>P5</div>
+                <div id="player7" class="btn btn-primary btn-xs"><i class="fa fa-gavel fa-lg" style="color: red"></i>P6</div>
+                <div id="player9" class="btn btn-primary btn-xs"><i class="fa fa-gavel fa-lg" style="color: red"></i>P7</div>
+			   <br><br><br>
+
+				<!-- <div class="dropdown">
+				  <button class="dropbtn">Kill</button>
+				  <div class="dropdown-content">
+				  	<% Game.last.mapia.each do |mapium| %>
+				  		<%= content_tag :div, class: "kill-button", id: "kill-mapium-#{mapium.id}" do %>
+				  			<i class="fa fa-gavel fa-lg" style="color: red"></i><%= "P#{mapium.id}" %>
+				  		<% end %>
+				  	<% end %>
+				  </div>
+				</div>
+				<br> -->
+
+				 <table class="table table-bordered">
+				    <thead>
+				      <tr>
+				        <th>User</th>
+				        <th>Role</th>
+				      </tr>
+				    </thead>
+				     <tbody>
+				      <tr>
+				     <% Game.last.users.each do |user| %> 
+				        <td><%= user.name %></td>
+				        <td><%= user.mapia.last.role %></td>
+				        </tr>
+				       <% end %>	      
+				     </tbody>
+				  </table>
 			</div>
 		</div>
 	</div>

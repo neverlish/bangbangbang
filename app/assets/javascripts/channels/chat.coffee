@@ -113,6 +113,10 @@ $(document).on 'click', '#day', ->
 $(document).on 'click', '#start_game', ->
   App.chat.start_game()
 
+$(document).ready ->
+  $('')
+
+
 $(document).on 'click', '#player1', ->
  App.chat.kill_player(0)
 $(document).on 'click', '#player2', ->
