@@ -20,8 +20,9 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
         $("#day-messages").scrollTop($("#day-messages")[0].scrollHeight)
 
     if data.system_info?
+
       if data.system_info == "user_join"
-        appendSystemAnounce(data.user_info.name + "님이 참여하셨습니다.")
+          appendSystemAnounce(data.user_info.name + "님이 참여하셨습니다.")
 
       else if data.system_info == "players_lists"
         $('#chatting-info-items').html('') #보내기전에 내용 전부다 지우기  

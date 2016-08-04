@@ -1,5 +1,7 @@
 # Be sure to restart your server when you modify this file. Action Cable runs in a loop that does not support auto reloading.
 class ChatChannel < ApplicationCable::Channel
+  @@user_list = []
+
  def subscribed
     stream_from 'messages'
   end
@@ -42,7 +44,10 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def user_join
-    ActionCable.server.broadcast('messages', step: Game.last.daynight, user_info: { name: Mapium.last.user.name, count_number: Mapium.where(game_id: Game.last.id).count}, system_info: "user_join")
+    unless @@user_list.include?(Mapium.last.user.name)
+      @@user_list << Mapium.last.user.name
+      ActionCable.server.broadcast('messages', step: Game.last.daynight, user_info: { name: Mapium.last.user.name, count_number: Mapium.where(game_id: Game.last.id).count}, system_info: "user_join")
+    end
     render_userListInfomessage()
   end
   
@@ -81,7 +86,8 @@ class ChatChannel < ApplicationCable::Channel
 
   def render_userListInfomessage()
     mapia = Game.last.mapia
-    ActionCable.server.broadcast('messages', players: mapia.each_with_index.map{|mapium, index| { index: index+1, name: mapium.user.name, status: mapium.status }}, system_info: "players_lists")
+    count_number = Mapium.where(game_id: Game.last.id).count
+    ActionCable.server.broadcast('messages', players: mapia.each_with_index.map{|mapium, index| { index: index+1, name: mapium.user.name, status: mapium.status }},count_number: Mapium.where(game_id: Game.last.id).count, system_info: "players_lists")
   end
 
   def render_gameEndMesseage(result)
