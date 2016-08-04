@@ -33,6 +33,7 @@ class ChatChannel < ApplicationCable::Channel
     # ActionCable.server.broadcast('messages',
     #   message: render_message("game started"),username:"<<INFO>>" )
     ActionCable.server.broadcast('messages', system_info: "game_started")
+    Game.last.update(status: "playing")
 
   end
 

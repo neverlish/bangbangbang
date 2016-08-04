@@ -65,7 +65,7 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
     $('#info-messages').html(message)
 
 
-#sytem info mation temporal function 
+#sytem info mation temporal functions 
 
  appendSystemAnounce = (message) ->
     if step == "day"
