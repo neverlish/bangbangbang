@@ -38,9 +38,9 @@ class ChatChannel < ApplicationCable::Channel
     if count_mapium >= 5
       Game.last.mapia.all.shuffle.each_with_index do |mapium, index|
         if count_mapium == 5 || count_mapium == 6
-          index < 1 ? ( mapium.update(role: "mapia") ) : ( mapium.update(role: "citizen") )
-        elsif count_mapium == 7
           index < 2 ? ( mapium.update(role: "mapia") ) : ( mapium.update(role: "citizen") )
+        elsif count_mapium == 7
+          index < 3 ? ( mapium.update(role: "mapia") ) : ( mapium.update(role: "citizen") )
         end
       end
     end
