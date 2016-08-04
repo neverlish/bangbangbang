@@ -83,7 +83,7 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
 
   appendSystemUserListItem = (userListItem) ->
     itemHtmlString = 
-      '<div>' + userListItem.index + ' ' + userListItem.name + ' ' + userListItem.status +
+      '<div>' + userListItem.index + ' ' + userListItem.name + ' [' + userListItem.status + ']' +
       '</div>'
 
     $('#chatting-info-items').append(itemHtmlString)
