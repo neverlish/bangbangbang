@@ -24,6 +24,12 @@ class ChatChannel < ApplicationCable::Channel
     ActionCable.server.broadcast('messages', step: step)
   end
 
+  def kill_player(data)
+    kill_numbeer = data['kill_number']
+    Game.last.mapia[kill_number].update(status:"dead")
+    render_userListInfomessage()
+  end
+
   def user_join
     ActionCable.server.broadcast('messages', step: Game.last.daynight, user_info: { name: Mapium.last.user.name, count_number: Mapium.where(game_id: Game.last.id).count}, system_info: "user_join")
     render_userListInfomessage()
