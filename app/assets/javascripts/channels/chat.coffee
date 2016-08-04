@@ -27,6 +27,7 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
         $('#chatting-info-items').html('') #보내기전에 내용 전부다 지우기  
         for player in data.players
           appendSystemUserListItem(player)
+        appendSystemMessage(data.count_number)
 
       else if data.system_info == "game_started"
         appendSystemAnounce("Mafia Game 이 시작되었습니다.")
@@ -112,12 +113,15 @@ $(document).on 'keypress', '#chat-talk', (event) ->
 
 $(document).on 'click', '#night', ->
   App.chat.change_step("night")
+  $('#input_day').toggle()
 
 $(document).on 'click', '#day', ->
   App.chat.change_step("day")
+  $('#input_night').toggle()
 
 $(document).on 'click', '#start_game', ->
   App.chat.start_game()
+  $('#start_game').toggle()
 
 $(document).ready ->
   $('')
