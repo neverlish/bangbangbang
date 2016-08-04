@@ -34,6 +34,16 @@ class ChatChannel < ApplicationCable::Channel
     #   message: render_message("game started"),username:"<<INFO>>" )
     ActionCable.server.broadcast('messages', system_info: "game_started")
     Game.last.update(status: "playing")
+    count_mapium = Game.last.mapia.size
+    if count_mapium >= 5
+      Game.last.mapia.all.shuffle.each_with_index do |mapium, index|
+        if count_mapium == 5 || count_mapium == 6
+          index < 1 ? ( mapium.update(role: "mapia") ) : ( mapium.update(role: "citizen") )
+        elsif count_mapium == 7
+          index < 2 ? ( mapium.update(role: "mapia") ) : ( mapium.update(role: "citizen") )
+        end
+      end
+    end
 
   end
 

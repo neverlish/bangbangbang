@@ -66,6 +66,9 @@
 				<div id="night" class="btn btn-primary">밤</div>
 				<div id="day" class="btn btn-primary">낮</div>
 				<div id="start_game" class="btn btn-primary">start game</div>
+				<% Game.last.users.each do |user| %>
+					<%= user.name %>: <%= user.mapia.last.role %><br>
+				<% end %>
 			<% end %>
 		</div>
 	</div>
