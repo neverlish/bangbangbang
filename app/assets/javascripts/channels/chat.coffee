@@ -21,12 +21,15 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
 
     if data.system_info?
       if data.system_info == "user_join"
-        appendMessage(data.user_info.name + "님이 참여하셨습니다.")
+        appendSystemAnounce(data.user_info.name + "님이 참여하셨습니다.")
 
       else if data.system_info == "players_lists"
         $('#chatting-info-items').html('') #보내기전에 내용 전부다 지우기  
         for player in data.players
           appendSystemUserListItem(player)
+
+      else if data.system_info == "game_started"
+        appendSystemAnounce("Mafia Game 이 시작되었습니다.")
 
     if data.system_info?
       if data.system_info == "user_join"
@@ -45,6 +48,9 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
   change_step: (step) ->
     @perform 'change_step', step: step
 
+  start_game: ->
+    @perform 'start_game'
+
   user_join: ->
     @perform 'user_join'
 
@@ -57,6 +63,18 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
 
   appendSystemMessage = (message) ->
     $('#info-messages').html(message)
+
+
+#sytem info mation temporal function 
+
+ appendSystemAnounce = (message) ->
+    if step == "day"
+      $('#day-messages').append(message + '<br>')
+
+    else if step == "night"
+      $('#night-messages').append(message + '<br>')
+
+#sytem info mation disaply (user list)
 
   appendSystemUserListItem = (userListItem) ->
     itemHtmlString = 
@@ -92,3 +110,6 @@ $(document).on 'click', '#night', ->
 
 $(document).on 'click', '#day', ->
   App.chat.change_step("day")
+
+$(document).on 'click', '#start_game', ->
+  App.chat.start_game()
