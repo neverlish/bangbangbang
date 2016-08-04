@@ -86,7 +86,8 @@ class ChatChannel < ApplicationCable::Channel
 
   def render_userListInfomessage()
     mapia = Game.last.mapia
-    ActionCable.server.broadcast('messages', players: mapia.each_with_index.map{|mapium, index| { index: index+1, name: mapium.user.name, status: mapium.status }}, system_info: "players_lists")
+    count_number = Mapium.where(game_id: Game.last.id).count
+    ActionCable.server.broadcast('messages', players: mapia.each_with_index.map{|mapium, index| { index: index+1, name: mapium.user.name, status: mapium.status }},count_number: Mapium.where(game_id: Game.last.id).count, system_info: "players_lists")
   end
 
   def render_gameEndMesseage(result)
