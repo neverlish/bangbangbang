@@ -1,72 +1,67 @@
 <body data-spy = "scroll" data-target = ".navbar-example">
 
-<div class="vidi">
-	 <article>
-			 <h1>MAFIA GAME</h1>
-	 </article>
-	 
-	<video autoplay="" loop="" class="fillWidth fadeIn animated" poster="https://s3-us-west-2.amazonaws.com/coverr/poster/Traffic-blurred2.jpg" id="video-background">
-			<source src="https://s3-us-west-2.amazonaws.com/coverr/mp4/Traffic-blurred2.mp4" type="video/mp4">
-	</video>
-</div>
-
-<br><br><br><br><br><br><br><br>
-
-
-<div class="page-header">
-<span><i class="fa fa-bullhorn fa-2x" style="color: red"></i>
-현재 접속자 인원 :</span>
-<span id="info-messages"></span>
-<span>명</span>
-
-<p>Signed in as @<%= cookies.signed[:username] %>.</p>
-
-</div>
-
-<div class="row">
-	<div class="col-xs-4">
-		<div class="chatting_space civilchat" id="day-chat">
-			<div class="outside">
-				<div class="inside" id="day-messages">
-				</div>	
-			</div>
-
-			Civil chatting <br/>
-			<div style = "width:250px;">
-				<%= text_field_tag :body, '', id: 'chat-speak' %>
-			</div>
-		</div>
+	<div class="vidi">
+		 <article>
+				 <h1>MAFIA GAME</h1>
+		 </article>
+		 
+		<video autoplay="" loop="" class="fillWidth fadeIn animated" poster="https://s3-us-west-2.amazonaws.com/coverr/poster/Traffic-blurred2.jpg" id="video-background">
+				<source src="https://s3-us-west-2.amazonaws.com/coverr/mp4/Traffic-blurred2.mp4" type="video/mp4">
+		</video>
 	</div>
 
-	<div class="col-xs-4">
-		<div class="chatting_space mafiachat" id="night-chat">
-			<div class="outside">
-				<div class="inside" id="night-messages">
+	<br><br><br><br><br><br><br><br>
+
+
+	<div class="page-header">
+		<span><i class="fa fa-bullhorn fa-2x" style="color: red"></i>
+		현재 접속자 인원 :</span>
+		<span id="info-messages"></span>
+		<span>명</span>
+		<p>Signed in as @<%= cookies.signed[:username] %>.</p>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-4">
+			<div class="chatting_space civilchat" id="day-chat">
+				<div class="outside" id="day-messages">
+					</div>
+
+					<div class="form-group">
+		                <label for="civil">CIVIL's</label>
+		                <textarea class="form-control" rows="5" id="chat-speak"></textarea>
+		                </div>
 				</div>
 			</div>
-		</div>
 
-		Mapia's chatting<br/>
-		<div style = "width:250px;" >
-			<%= text_field_tag :body, '', id: 'chat-talk' %>
-		</div>
-	</div>
+		<div class="col-xs-4">
+			<div class="chatting_space mafiachat" id="night-chat">
+				<div class="outside" id="night-messages">
+					</div>
+						
+					<div class="form-group">
+			           <label for="mafia" style="color: white">MAFIA's:</label>
+			           <textarea class="form-control" rows="5" id="chat-talk"></textarea>
+			           </div>
+			     </div>
+			</div>
 
-	<div class="col-xs-3">
-	<div class="chatting_info">
-
-		<h3>user info</h3>
-		<div id="chatting-info-items"></div>
-	</div>
-	</div>
-	<div class="col-xs-1">
-		<div class="chatbtn">
+		<div class="col-xs-3">
+			<div class="chatting_info">
+			<h3>user info</h3>
+			<div id="chatting-info-items"></div>
+			</div>
+			</div>
+		
+		<div class="col-xs-1">
+			<div class="chatbtn">
 
 			<% if current_user.id == Game.last.master_id %>
 				<div id="night" class="btn btn-primary">밤</div>
 				<div id="day" class="btn btn-primary">낮</div>
 				<div id="start_game" class="btn btn-primary">start game</div>
 			<% end %>
+			</div>
 		</div>
 	</div>
-</div>
+</body>
