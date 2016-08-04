@@ -24,6 +24,12 @@ class ChatChannel < ApplicationCable::Channel
     ActionCable.server.broadcast('messages', step: step)
   end
 
+  def kill_player(data)
+    kill_numbeer = data['kill_number']
+    Game.last.mapia[kill_number].update(status:"dead")
+    render_userListInfomessage()
+  end
+
   def user_join
     ActionCable.server.broadcast('messages', step: Game.last.daynight, user_info: { name: Mapium.last.user.name, count_number: Mapium.where(game_id: Game.last.id).count}, system_info: "user_join")
     render_userListInfomessage()
@@ -33,6 +39,17 @@ class ChatChannel < ApplicationCable::Channel
     # ActionCable.server.broadcast('messages',
     #   message: render_message("game started"),username:"<<INFO>>" )
     ActionCable.server.broadcast('messages', system_info: "game_started")
+    Game.last.update(status: "playing")
+    count_mapium = Game.last.mapia.size
+    if count_mapium >= 5
+      Game.last.mapia.all.shuffle.each_with_index do |mapium, index|
+        if count_mapium == 5 || count_mapium == 6
+          index < 2 ? ( mapium.update(role: "mapia") ) : ( mapium.update(role: "citizen") )
+        elsif count_mapium == 7
+          index < 3 ? ( mapium.update(role: "mapia") ) : ( mapium.update(role: "citizen") )
+        end
+      end
+    end
 
   end
 

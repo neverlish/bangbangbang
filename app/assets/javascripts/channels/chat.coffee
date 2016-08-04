@@ -44,6 +44,9 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
   change_step: (step) ->
     @perform 'change_step', step: step
 
+  kill_player: (kill_number) ->
+   @perform 'kill_player', kill_number: kill_number
+
   start_game: ->
     @perform 'start_game'
 
@@ -61,7 +64,7 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
     $('#info-messages').html(message)
 
 
-#sytem info mation temporal function 
+#sytem info mation temporal functions 
 
  appendSystemAnounce = (message) ->
     if step == "day"
@@ -109,3 +112,24 @@ $(document).on 'click', '#day', ->
 
 $(document).on 'click', '#start_game', ->
   App.chat.start_game()
+
+$(document).on 'click', '#player1', ->
+ App.chat.kill_player(0)
+$(document).on 'click', '#player2', ->
+ App.chat.kill_player(1)
+$(document).on 'click', '#player3', ->
+ App.chat.kill_player(2)
+$(document).on 'click', '#player4', ->
+ App.chat.kill_player(3)
+$(document).on 'click', '#player5', ->
+ App.chat.kill_player(4)
+$(document).on 'click', '#player6', ->
+ App.chat.kill_player(5)
+$(document).on 'click', '#player7', ->
+ App.chat.kill_player(6)
+$(document).on 'click', '#player8', ->
+ App.chat.kill_player(7)
+$(document).on 'click', '#player9', ->
+ App.chat.kill_player(8)
+$(document).on 'click', '#player10', ->
+ App.chat.kill_player(9)
