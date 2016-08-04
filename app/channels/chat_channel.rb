@@ -85,7 +85,7 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def render_gameEndMesseage(result)
-    Game.last.update(result: result)
+    Game.last.update(result: result,status: "done")
     ActionCable.server.broadcast('messages', result: result, system_info: "game_end")
    end
 
