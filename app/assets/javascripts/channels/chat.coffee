@@ -38,6 +38,7 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
 
       else if data.system_info == "game_end"
         appendSystemAnounce("<<게임 끝>>" + data.result + "승리")
+        $("#myModal").modal() 
 
     if data.system_info?
       if data.system_info == "user_join"
