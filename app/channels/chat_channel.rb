@@ -28,7 +28,17 @@ class ChatChannel < ApplicationCable::Channel
     kill_number = data['kill_number'].to_i
     ActionCable.server.broadcast('messages', system_info: "player_dead", player_name: Game.last.mapia[kill_number].user.name)
     Game.last.mapia[kill_number].update(status:"dead")
-    render_userListInfomessage()
+
+    #check triumph condition
+    if Game.last.mapia.where(role:"mapia", status:"alive").size == 0
+      render_gameEndMesseage("citzen")
+    elsif Game.last.mapia.where(role:"citizen",status:"alive") <=Game.last.mapia.where(role:"mapia",status:"alive")
+      render_gameEndMesseage("mafia")
+    else
+      render_userListInfomessage()
+    end
+
+
   end
 
   def user_join
@@ -73,5 +83,10 @@ class ChatChannel < ApplicationCable::Channel
     mapia = Game.last.mapia
     ActionCable.server.broadcast('messages', players: mapia.each_with_index.map{|mapium, index| { index: index, name: mapium.user.name, status: mapium.status }}, system_info: "players_lists")
   end
+
+  def render_gameEndMesseage(result)
+    Game.last.update(result: result)
+    ActionCable.server.broadcast('messages', result: result, system_info: "game_end")
+   end
 
 end

@@ -34,6 +34,9 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
       else if data.system_info == "player_dead"
         appendSystemAnounce(data.player_name + "이 사망했습니다.")
 
+      else if data.system_info == "game_end"
+        appendSystemAnounce("<<게임 끝>>" + data.result + "승리")
+
     if data.system_info?
       if data.system_info == "user_join"
         appendSystemMessage(data.user_info.count_number)
