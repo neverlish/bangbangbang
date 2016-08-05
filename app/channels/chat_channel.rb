@@ -31,6 +31,7 @@ class ChatChannel < ApplicationCable::Channel
     ActionCable.server.broadcast('messages', system_info: "player_dead", player_name: Game.last.mapia[kill_number].user.name)
     Game.last.mapia[kill_number].update(status:"dead")
 
+    render_userListInfomessage()
     #check triumph condition
     if Game.last.mapia.where(role:"mapia", status:"alive").size == 0
       render_gameEndMesseage("citzen")
